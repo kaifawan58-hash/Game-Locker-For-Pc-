@@ -1,0 +1,36 @@
+<Window x:Class="GameLock.Gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GameLock - Parental Game Control" Height="480" Width="560"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Protection Status: " FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBlock x:Name="StatusText" Text="UNKNOWN" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0,0,0"/>
+        </StackPanel>
+
+        <ListBox x:Name="GameListBox" Grid.Row="1" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="AddGameButton" Content="Add Game" Width="100" Margin="0,0,6,0" Click="AddGameButton_Click"/>
+            <Button x:Name="RemoveGameButton" Content="Remove Game" Width="110" Margin="0,0,6,0" Click="RemoveGameButton_Click"/>
+            <Button x:Name="ClearGamesButton" Content="Clear Games" Width="100" Margin="0,0,6,0" Click="ClearGamesButton_Click"/>
+        </StackPanel>
+
+        <UniformGrid Grid.Row="3" Rows="2" Columns="3">
+            <Button x:Name="LockNowButton" Content="Lock Now" Margin="4" Click="LockNowButton_Click"/>
+            <Button x:Name="UnlockButton" Content="Unlock" Margin="4" Click="UnlockButton_Click"/>
+            <Button x:Name="ChangePasswordButton" Content="Change Password" Margin="4" Click="ChangePasswordButton_Click"/>
+            <Button x:Name="InstallProtectionButton" Content="Install Protection" Margin="4" Click="InstallProtectionButton_Click"/>
+            <Button x:Name="UninstallProtectionButton" Content="Uninstall Protection" Margin="4" Click="UninstallProtectionButton_Click"/>
+            <Button x:Name="RefreshStatusButton" Content="Refresh Status" Margin="4" Click="RefreshStatusButton_Click"/>
+        </UniformGrid>
+    </Grid>
+</Window>
