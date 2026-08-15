@@ -7,4 +7,9 @@
     <RootNamespace>GameLock.Common</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!-- Required for PipeSecurity/PipeAccessRule/PipeAccessRights used in PipeChannel.cs -->
+    <PackageReference Include="System.IO.Pipes.AccessControl" Version="6.0.0" />
+  </ItemGroup>
+
 </Project>

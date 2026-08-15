@@ -49,7 +49,9 @@ namespace GameLock.Common
             if (length <= 0 || length > 1_000_000) return default;
 
             byte[] payload = new byte[length];
-            await ReadExactAsync(pipe, payload, length);
+            int payloadRead = await ReadExactAsync(pipe, payload, length);
+            if (payloadRead < length) return default; // connection dropped mid-message
+
             return JsonSerializer.Deserialize<T>(payload);
         }
 
