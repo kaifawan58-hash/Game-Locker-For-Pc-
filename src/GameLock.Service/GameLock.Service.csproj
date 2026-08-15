@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>GameLock.Service</RootNamespace>
+    <UserSecretsId>dotnet-GameLock.Service</UserSecretsId>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>GameLockService</AssemblyName>
+    <!-- The service must run elevated (installed under LocalSystem via sc.exe); no separate
+         app.manifest UAC prompt is needed since the SCM starts it directly with SYSTEM rights. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="8.0.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.IO.Pipes.AccessControl" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameLock.Common\GameLock.Common.csproj" />
+  </ItemGroup>
+
+</Project>
