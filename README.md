@@ -153,4 +153,4 @@ None of this is specific to GameLock — it's true of essentially all local, sof
 
 ## License
 
-Add a license of your choice (e.g. MIT) before publishing publicly.
+Not Allow to Edit,Free To Use
