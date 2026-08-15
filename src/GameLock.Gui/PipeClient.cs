@@ -19,11 +19,11 @@ namespace GameLock.Gui
             }
             catch (TimeoutException)
             {
-                return new PipeResponse { Success = false, Message = "GameLock protection service is not running. Use 'Install Protection' first." };
+                return new PipeResponse { Success = false, Message = "SERVICE_UNREACHABLE: GameLock protection service is not running. Use 'Install Protection' first." };
             }
             catch (Exception ex)
             {
-                return new PipeResponse { Success = false, Message = $"Could not reach protection service: {ex.Message}" };
+                return new PipeResponse { Success = false, Message = $"SERVICE_UNREACHABLE: Could not reach protection service: {ex.Message}" };
             }
 
             await PipeChannel.WriteMessageAsync(client, request);

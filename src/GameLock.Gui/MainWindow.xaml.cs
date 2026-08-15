@@ -226,7 +226,7 @@ namespace GameLock.Gui
         {
             var response = await PipeClient.SendAsync(new PipeRequest { Command = PipeCommandType.GetStatus });
 
-            if (!response.Success && response.Message.Contains("not running", StringComparison.OrdinalIgnoreCase))
+            if (!response.Success && response.Message.StartsWith("SERVICE_UNREACHABLE", StringComparison.Ordinal))
             {
                 StatusText.Text = "PROTECTION SERVICE NOT INSTALLED/RUNNING";
                 StatusText.Foreground = Brushes.DarkOrange;
@@ -239,7 +239,11 @@ namespace GameLock.Gui
 
         private void ShowResponse(PipeResponse response)
         {
-            MessageBox.Show(this, response.Message, "GameLock", MessageBoxButton.OK,
+            string displayMessage = response.Message.StartsWith("SERVICE_UNREACHABLE: ", StringComparison.Ordinal)
+                ? response.Message["SERVICE_UNREACHABLE: ".Length..]
+                : response.Message;
+
+            MessageBox.Show(this, displayMessage, "GameLock", MessageBoxButton.OK,
                 response.Success ? MessageBoxImage.Information : MessageBoxImage.Error);
         }
     }
